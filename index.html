@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060d1c">
+  <meta name="description" content="An offline cybersecurity escape room. Investigate phishing, secure the Password Fortress, and escape ZERO's network.">
+  <title>Escape the Hacker's Network</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<!-- All artwork is local vector art. No external images, fonts or network requests. -->
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+ <defs>
+  <linearGradient id="wall-gradient" x2="0" y2="1"><stop stop-color="#14263d"/><stop offset="1" stop-color="#070e1d"/></linearGradient>
+  <linearGradient id="floor-gradient" x2="0" y2="1"><stop stop-color="#182b40"/><stop offset="1" stop-color="#090f1d"/></linearGradient>
+  <linearGradient id="screen-gradient" x2="1" y2="1"><stop stop-color="#05354b"/><stop offset="1" stop-color="#082237"/></linearGradient>
+  <linearGradient id="hair-gradient" x2="1" y2="1"><stop stop-color="#e0ffff"/><stop offset=".45" stop-color="#76c8db"/><stop offset="1" stop-color="#54529b"/></linearGradient>
+  <linearGradient id="jacket-gradient" x2="1" y2="1"><stop stop-color="#23354d"/><stop offset="1" stop-color="#071221"/></linearGradient>
+  <radialGradient id="room-glow"><stop stop-color="#12b9cc" stop-opacity=".2"/><stop offset="1" stop-color="#12b9cc" stop-opacity="0"/></radialGradient>
+  <radialGradient id="portrait-glow"><stop stop-color="#15637d"/><stop offset="1" stop-color="#102136"/></radialGradient>
+  <pattern id="city-windows" width="14" height="18" patternUnits="userSpaceOnUse"><rect width="3" height="6" x="4" y="4" fill="#4cbed0" opacity=".36"/></pattern>
+  <pattern id="server-slots" width="65" height="19" patternUnits="userSpaceOnUse"><rect width="55" height="11" x="5" y="4" rx="2" fill="#1a3446"/><path d="M12 9h22" stroke="#38576b"/><circle cx="47" cy="9" r="2" fill="#54ebc7"/></pattern>
+  <filter id="soft-glow"><feGaussianBlur stdDeviation="3"/></filter>
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6zM8 12l3 3 5-6"/></symbol>
+  <symbol id="icon-scan" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 12h18M8 8h8v8H8z"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol>
+  <symbol id="icon-hint" viewBox="0 0 24 24"><path d="M8 17c0-4-3-4-3-8a7 7 0 0 1 14 0c0 4-3 4-3 8zm1 4h6M12 6v5"/></symbol>
+  <symbol id="icon-evidence" viewBox="0 0 24 24"><path d="M4 5h6l2 3h8v12H4zm4 8h8m-8 3h5"/></symbol>
+  <symbol id="icon-notes" viewBox="0 0 24 24"><path d="M14 3H4v18h16V11M8 8h3m-3 5h3m-3 4h7m0-11 3-3 3 3-8 8-3 1 1-3z"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+  <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-5v16l-5-5H3zm13-2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"/></symbol>
+  <symbol id="icon-muted" viewBox="0 0 24 24"><path d="M3 9h4l5-5v16l-5-5H3zm13 0 6 6m0-6-6 6"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 6"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+  <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="5"/><path d="m12 12 9 9m-4-4 3-3m-6 0 3-3"/></symbol>
+  <symbol id="icon-terminal" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m6 7 3 3-3 3m6 0h5m-5 4v4m-5 0h10"/></symbol>
+  <symbol id="icon-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2zm6-2v16m6-14v16"/></symbol>
+  <symbol id="icon-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8L21 9h-8z"/></symbol>
+
+  <!-- AIRI: original anime-inspired vector portrait. -->
+  <symbol id="airi-portrait" viewBox="0 0 220 250">
+   <path d="M0 0h220v250H0z" fill="url(#portrait-glow)"/>
+   <g fill="none" stroke="#55cddd" opacity=".2"><circle cx="110" cy="112" r="88"/><circle cx="110" cy="112" r="99"/><path d="M0 180h220M25 0v250M195 0v250"/></g>
+   <path d="M44 149C24 95 42 28 109 21c67-2 92 66 63 142l-10 32H56z" fill="#334c77"/>
+   <path d="m82 167-31 12-32 71h184l-33-70-34-14z" fill="url(#jacket-gradient)" stroke="#4b637d"/>
+   <path d="m93 148-3 29 21 19 22-21-6-28" fill="#e9b8ae"/>
+   <path d="m66 72 3 65q9 29 42 37 36-10 45-40l2-63z" fill="#f6d5c8"/>
+   <path d="M64 107 70 68l32-22 31 4 25 26 3 35 14-27-21-41-47-10-43 23-17 39z" fill="url(#hair-gradient)"/>
+   <path d="M46 110Q36 44 96 26l40 3q-33 3-36 42l-17 29 3-32-21 42-6 60-16-13z" fill="url(#hair-gradient)"/>
+   <path d="M109 35q53 0 66 57l-2 66-16 19-8-57-1-40-23-22 11 43-31-36-12 24 6-37z" fill="url(#hair-gradient)"/>
+   <path d="m72 111 8-6 17 5m25 0 18-5 9 6" fill="none" stroke="#47374c" stroke-width="3"/>
+   <path d="m75 114 22-1q-6 17-18 8zm48-1 23 1-4 8q-13 7-18-9" fill="#fff"/>
+   <ellipse cx="87" cy="117" rx="5" ry="8" fill="#18a0b5"/><ellipse cx="134" cy="117" rx="5" ry="8" fill="#18a0b5"/>
+   <ellipse cx="88" cy="119" rx="2" ry="5" fill="#0b263d"/><ellipse cx="133" cy="119" rx="2" ry="5" fill="#0b263d"/>
+   <g fill="white"><circle cx="89" cy="114" r="2"/><circle cx="135" cy="114" r="2"/></g>
+   <path d="m109 125-3 10h5m-8 11q9 5 17-1" fill="none" stroke="#bc817d" stroke-width="1.5" stroke-linecap="round"/>
+   <path d="m54 100 9 2v37l-10 4-8-10v-23zm108 1 9-2 5 11-3 25-11 6" fill="#0b233c" stroke="#65eff0" stroke-width="2"/>
+   <path d="m58 139 10 13h28" fill="none" stroke="#65eff0" stroke-width="2"/><circle cx="96" cy="152" r="3" fill="#65eff0"/>
+   <path d="m80 177 30 24-14 29-27-43zm58 0-28 24 17 29 23-43z" fill="#263f59" stroke="#58c9db"/>
+   <path d="m110 201 5 49m-76-37 13-23m116 23-13-23" fill="none" stroke="#49e8e5" stroke-width="3"/>
+   <path d="m144 223 13-6 13 6v12l-13 8-13-8z" fill="#153749" stroke="#71ede2"/>
+   <path d="m151 229 4 4 7-8" fill="none" stroke="#71ede2" stroke-width="2"/>
+  </symbol>
+
+  <!-- Playable agent, front-facing chibi silhouette with silver hair and cyan coat. -->
+  <symbol id="agent-sprite" viewBox="0 0 80 115">
+   <ellipse cx="40" cy="107" rx="28" ry="6" fill="#001018" opacity=".65"/>
+   <ellipse cx="40" cy="108" rx="30" ry="7" fill="none" stroke="#57edec" opacity=".65"/>
+   <path d="m27 72-2 28-5 7h18l3-28 4 28h16l-6-9-3-26" fill="#101c32" stroke="#45617b"/>
+   <path d="m24 51-9 24 8 6 7-20 21 1 9 20 7-8-12-24" fill="#223952" stroke="#56cad3" stroke-width="2"/>
+   <path d="m25 52 14-5 15 5 3 29-32 1z" fill="url(#jacket-gradient)" stroke="#57c8d4"/>
+   <path d="m39 53 2 30m-14-24 8 4m10 0 8-4" stroke="#83fff1" stroke-width="2"/>
+   <path d="m29 36 1 11q9 12 20 0l3-19-28-4z" fill="#f6d2c3"/>
+   <path d="M22 33Q14 9 40 7q27 0 22 32l-10-15-6 11-4-14-11 14 1-12-8 18z" fill="url(#hair-gradient)" stroke="#a7e6ef"/>
+   <path d="m29 40 7 1m8 0 7-1" stroke="#24364b" stroke-width="2"/>
+   <path d="m22 30 6 2v13l-6-3m33-10 5-2v12l-5 3" fill="#0c283c" stroke="#4ce8e2"/>
+   <path d="m16 78 5 7m42-6-4 7" stroke="#f6d2c3" stroke-width="6" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Command center: a complete SVG environment, drawn in a 1000 x 590 world. -->
+  <symbol id="room-art" viewBox="0 0 1000 590">
+   <path d="M0 0h1000v590H0z" fill="#070f20"/>
+   <path d="M0 0h1000v275H0z" fill="url(#wall-gradient)"/>
+   <path d="m0 275 1000 0v315H0z" fill="url(#floor-gradient)"/>
+   <path d="m0 0 77 44v233L0 370zm1000 0-74 44v233l74 93" fill="#102135"/>
+   <g fill="none" stroke="#29445c" opacity=".48"><path d="m77 277-250 313m375-313L41 590m286-313-32 313m164-313 59 313m74-313 171 313m-35-313 277 313M0 326h1000M0 390h1000M0 471h1000M0 575h1000"/></g>
+   <ellipse cx="495" cy="374" rx="380" ry="204" fill="url(#room-glow)"/>
+   <!-- Wide observation window and skyline. -->
+   <path d="M244 47h486v151H244z" fill="#081321" stroke="#2a4964" stroke-width="7"/>
+   <path d="M254 58h466v128H254z" fill="#0a192f"/>
+   <g fill="#102840"><path d="M259 144h28v42h-28zm29-41h42v83h-42zm49 25h37v58h-37zm38-56h37v114h-37zm45 42h49v72h-49zm55-26h41v98h-41zm48 45h31v53h-31zm37-44h35v97h-35zm45 28h27v69h-27zm31-53h43v122h-43zm50 59h33v63h-33z"/></g>
+   <path d="M259 144h28v42h-28zm29-41h42v83h-42zm49 25h37v58h-37zm38-56h37v114h-37zm45 42h49v72h-49zm55-26h41v98h-41zm48 45h31v53h-31zm37-44h35v97h-35zm45 28h27v69h-27zm31-53h43v122h-43zm50 59h33v63h-33z" fill="url(#city-windows)"/>
+   <g stroke="#355270" stroke-width="4"><path d="M403 49v141m157-141v141"/></g>
+   <path d="M243 199h490" stroke="#59e5ed" stroke-width="2"/><path d="M244 202h489" stroke="#59e5ed" stroke-width="6" filter="url(#soft-glow)" opacity=".3"/>
+   <g fill="#6b94b2" font-family="monospace" font-size="9" letter-spacing="3"><text x="250" y="32">NEXUS // SECURITY OPERATIONS</text><text x="801" y="39">RESTRICTED</text></g>
+   <!-- Server racks left. -->
+   <g stroke="#344a61" stroke-width="3"><rect x="87" y="60" width="67" height="157" rx="3" fill="#080f1c"/><rect x="166" y="60" width="67" height="157" rx="3" fill="#080f1c"/></g>
+   <g fill="url(#server-slots)"><rect x="90" y="68" width="60" height="138"/><rect x="170" y="68" width="60" height="138"/></g>
+   <g fill="#54e9ca"><circle cx="99" cy="54" r="2"/><circle cx="178" cy="54" r="2"/></g>
+   <!-- Exit bulkhead. Actual interactive label is positioned on top. -->
+   <path d="m784 83 25-22h100l23 22v202H784z" fill="#080e1b" stroke="#37516a" stroke-width="5"/>
+   <path d="M799 88h57v188h-57zm63 0h55v188h-55z" fill="#192c40" stroke="#28445a"/>
+   <path d="M857 87v190" stroke="#2a9dba" stroke-width="3"/>
+   <path d="m806 110 26 20v57l-26 20m101-97-25 20v57l25 20" fill="none" stroke="#2d4b64" stroke-width="3"/>
+   <path d="M798 77h116" stroke="#a877fc" stroke-width="3"/>
+   <rect x="929" y="159" width="19" height="36" rx="2" fill="#091326" stroke="#59657c"/><rect x="933" y="165" width="11" height="10" fill="#f06c83"/><path d="M934 180h9m-9 5h9" stroke="#758698"/>
+   <!-- Angled left workstation. -->
+   <path d="m81 262 142-5 58 41-162 7z" fill="#253e54" stroke="#426078"/>
+   <path d="m119 305 162-7v17l-161 10z" fill="#11253a"/><path d="M129 325v38m135-48v35" stroke="#30455c" stroke-width="8"/>
+   <path d="m105 214 89-1 17 58-91 3z" fill="#030b16" stroke="#476f86" stroke-width="4"/>
+   <path d="m114 222 73-1 12 43-74 1z" fill="url(#screen-gradient)"/>
+   <g stroke="#48cad6" opacity=".7"><path d="m124 235 16 0m5 0 32 0m-49 7 45 0m-42 7 16 0m8 0 27 0"/></g>
+   <path d="m151 285 56-2 14 10-56 3" fill="#4b677d"/>
+   <!-- Central console, layered hologram and worktop. -->
+   <ellipse cx="492" cy="296" rx="168" ry="42" fill="#003e50" opacity=".26"/>
+   <path d="m338 264 292 0 53 47-404 0z" fill="#213c54" stroke="#4a6a83" stroke-width="2"/>
+   <path d="m279 311 404 0-7 25H287z" fill="#0d2238" stroke="#26465c"/>
+   <path d="M303 339v35m351-35v35" stroke="#2d435d" stroke-width="14"/>
+   <path d="M293 320h376" stroke="#3ae1df" stroke-width="2"/>
+   <g fill="url(#screen-gradient)" stroke="#38b7cb" stroke-width="2"><path d="m316 193 91 8v70l-91-8z"/><path d="m576 201 91-8v70l-91 8z"/><rect x="419" y="175" width="144" height="99" rx="4"/></g>
+   <g fill="none" stroke="#4ce3e6"><circle cx="491" cy="221" r="29" opacity=".7"/><circle cx="491" cy="221" r="35" stroke-dasharray="15 9" opacity=".4"/><path d="m491 201 14 6v15q0 9-14 17-14-8-14-17v-15zm-7 18 6 6 9-12" stroke-width="2"/></g>
+   <g stroke="#48b9cc" opacity=".8"><path d="m326 211 65 6m-65 6 43 5m-43 7 59 7m-59 5 20 3m13 0 27 4M589 213h29m-29 8h64m-64 8h49m-49 8h32m-32 8h65"/></g>
+   <g fill="#367087"><path d="m423 284 138 0 15 13H409z"/><path d="m590 282 21-3 11 12-22 3z"/></g>
+   <path d="M447 285h87m-93 5h98" stroke="#58a5b9"/>
+   <!-- Small right terminal. -->
+   <path d="m714 321 103-17 66 35-110 22z" fill="#254156" stroke="#44627b"/>
+   <path d="m773 361 110-22v17l-110 24z" fill="#11263b"/><path d="M787 378v32m77-53v39" stroke="#2f465e" stroke-width="9"/>
+   <path d="m737 276 76-16 15 65-77 17z" fill="#05101f" stroke="#507488" stroke-width="4"/>
+   <path d="m746 282 60-12 11 48-61 13z" fill="#072c40"/>
+   <path d="m757 303 10-13 12 14 12-19 12 10" stroke="#9b85f4" fill="none" stroke-width="2"/>
+   <!-- Locker and evidence table. -->
+   <path d="m88 300 63 13v84l-63-15z" fill="#1a3044" stroke="#47617a"/><path d="m94 308 50 11v68l-50-11z" fill="#142538" stroke="#2c465f"/>
+   <path d="m113 312 0 69m-17-48 11 2m14 4 16 3" stroke="#50748c"/><path d="m117 348 0 14" stroke="#76acbb" stroke-width="3"/>
+   <path d="m167 410 72-6 35 22-80 10z" fill="#2b455c" stroke="#506c80"/><path d="m194 436v38m65-46v31" stroke="#334c63" stroke-width="7"/>
+   <path d="m194 416 30-3 11 9-32 4z" fill="#73dad2"/>
+   <path d="m202 416 18 0m-16 3 21 0" stroke="#164957"/>
+   <!-- Ceiling surveillance cameras and environmental strips. -->
+   <g fill="#68839a" stroke="#172d45" stroke-width="2"><path d="m77 30 20 0 0 8 21 9-9 17-31-12 5-12z"/><path d="m923 30-20 0 0 8-21 9 9 17 31-12-5-12z"/></g>
+   <circle cx="107" cy="57" r="3" fill="#fe607a"/><circle cx="893" cy="57" r="3" fill="#fe607a"/>
+   <path d="M14 191v120m972-120v120M79 282h164m455 0h84" stroke="#53dbe9" stroke-width="2"/>
+   <path d="m94 519 33 19h174m386 0h174l43-28" fill="none" stroke="#2a7f97" stroke-width="3"/>
+   <path d="M364 516h249" stroke="#56d7de" stroke-width="2" opacity=".4"/>
+   <g fill="#54869d" font-family="monospace" font-size="12" letter-spacing="4"><text x="386" y="557">SECTOR 07 / NEXUS</text></g>
+  </symbol>
+ </defs>
+</svg>
+
+<main>
+ <section id="menu" class="menu-screen" aria-label="Main menu">
+  <header class="topbar">
+   <div class="brand"><span class="brand-mark"><svg class="icon"><use href="#icon-shield"/></svg></span><span>NEXUS<span class="brand-sub">CYBER DEFENSE DIVISION</span></span></div>
+   <div class="system-tag"><span class="status-dot"></span> LOCAL SIMULATION <span class="version">v.01</span></div>
+  </header>
+  <div class="menu-grid">
+   <div class="menu-copy">
+    <p class="eyebrow"><span class="short-line"></span> CYBERSECURITY ESCAPE ROOM</p>
+    <h1 class="hero-title">ESCAPE THE<br><span>HACKER’S</span><br>NETWORK<span class="title-dot">.</span></h1>
+    <p class="hero-description">The network is compromised. The doors are locked.<br>Outsmart ZERO. Secure the system. Find your way out.</p>
+    <div class="menu-actions">
+     <button class="btn btn-primary start-button" data-action="start">START GAME <svg class="icon"><use href="#icon-arrow"/></svg></button>
+     <button id="continue-game" class="btn btn-ghost" data-action="continue" hidden>RESUME SESSION</button>
+     <div class="secondary-actions"><button class="btn btn-ghost" data-action="settings">SETTINGS</button><button class="btn btn-ghost" data-action="about">ABOUT</button></div>
+    </div>
+    <p class="menu-local"><svg class="icon"><use href="#icon-lock"/></svg> OFFLINE READY <span>•</span> YOUR PROGRESS STAYS HERE</p>
+   </div>
+   <div class="menu-art" aria-label="Illustrated futuristic cybersecurity command center">
+    <div class="art-topline"><span><i class="status-dot"></i> LIVE FEED / COMMAND CENTER</span><span>CAM 04</span></div>
+    <div class="menu-scene"><svg class="room-illustration" viewBox="0 0 1000 590" role="img" aria-label="Neon command room with security terminals and a locked door"><use href="#room-art"/></svg><div class="feed-corner top-left"></div><div class="feed-corner bottom-right"></div><div class="feed-threat"><span class="status-dot danger-dot"></span> INTRUSION DETECTED</div></div>
+    <div class="art-caption"><span>35.6895° N · SECTOR 07</span><span>ENCRYPTED CONNECTION</span></div>
+    <div class="menu-airi"><div class="portrait-frame"><svg viewBox="0 0 220 250" role="img" aria-label="AIRI, silver-haired AI cybersecurity mentor"><use href="#airi-portrait"/></svg></div><div><p class="eyebrow">AIRI <span class="success">● ONLINE</span></p><p>“You’re our last line of defense.<br>Let’s take back the network.”</p><span class="muted">YOUR AI SECURITY MENTOR</span></div></div>
+   </div>
+  </div>
+  <footer class="menu-footer"><div class="mission-card"><span>01</span><div><strong>INVESTIGATE</strong><p>Find the threat hiding in plain sight.</p></div></div><div class="mission-card"><span>02</span><div><strong>FORTIFY</strong><p>Build a password ZERO can’t break.</p></div></div><div class="mission-card"><span>03</span><div><strong>ESCAPE</strong><p>Earn clearance. Unlock the next zone.</p></div></div><p class="menu-controls-note"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE <span>·</span> <kbd>E</kbd> INTERACT<br>OR CLICK / TAP TO EXPLORE</p></footer>
+ </section>
+
+ <section id="game" class="game-screen" aria-label="Cybersecurity game" hidden>
+  <header class="game-topbar"><div class="brand"><span class="brand-mark"><svg class="icon"><use href="#icon-shield"/></svg></span><span>NEXUS<span class="brand-sub">ESCAPE THE HACKER’S NETWORK</span></span></div><div class="game-controls"><span class="connection-state"><span class="status-dot"></span> LOCAL SESSION</span><button id="mute-button" class="icon-button" data-action="mute" aria-label="Mute sound" title="Toggle sound"><svg class="icon"><use href="#icon-volume"/></svg></button><button class="btn btn-ghost compact" data-action="settings">SETTINGS</button><button class="btn btn-ghost compact" data-action="menu">MENU</button><button class="btn btn-ghost compact" data-action="reset">RESET DEMO</button></div></header>
+  <div class="hud-grid">
+   <div class="player-hud panel"><div class="hud-avatar"><svg viewBox="0 0 80 115" aria-hidden="true"><use href="#agent-sprite"/></svg></div><div class="player-info"><p class="eyebrow">PLAYER <span id="player-level">LV. 1</span></p><div class="health-track"><div id="health-fill"></div></div><span id="health-label" class="muted">SYSTEM INTEGRITY 100%</span></div></div>
+   <div class="objective-hud panel"><svg class="icon"><use href="#icon-scan"/></svg><div><p class="eyebrow">CURRENT OBJECTIVE</p><p id="objective-text">Investigate the suspicious emails.</p></div></div>
+   <div class="metrics-hud panel"><div><span class="eyebrow">TIME</span><strong id="timer-value">02:45</strong><span class="metric-note">SPEED BONUS</span></div><div><span class="eyebrow">SCORE</span><strong id="score-value">0000</strong><span class="metric-note">SECURITY POINTS</span></div></div>
+  </div>
+  <div class="game-body">
+   <section id="room-screen" class="room-screen" aria-label="Command center">
+    <div class="section-heading"><div><p class="eyebrow">SECTOR 07 / ZONE A</p><h2>Cyber Security Command Center</h2></div><div class="room-meta"><span class="status-dot"></span><span id="room-status">NETWORK UNDER THREAT</span></div></div>
+    <div class="room-layout">
+     <div class="room-shell">
+      <div id="room" class="room" tabindex="0" aria-label="Command room. Move with WASD or arrow keys, press E near an object, or select an object to approach it.">
+       <svg class="room-illustration" viewBox="0 0 1000 590" role="img" aria-label="Command center, main terminal in the middle, locker and evidence to the left, security door to the right"><use href="#room-art"/></svg><div class="room-vignette"></div><div class="scan-beam" aria-hidden="true"></div>
+       <button class="room-object terminal-object" data-object="terminal" style="left:49%;top:44%" aria-label="Approach main terminal"><span class="object-marker"><svg class="icon"><use href="#icon-terminal"/></svg></span><span class="object-label">MAIN TERMINAL <small>01 / INVESTIGATE</small></span></button>
+       <button id="door-object" class="room-object door-object" data-object="door" style="left:86%;top:50%" aria-label="Approach security door"><span class="object-marker"><svg class="icon"><use href="#icon-lock"/></svg></span><span class="object-label">SECURITY DOOR <small id="zone-b-label">CLEARANCE 1 REQUIRED</small></span></button>
+       <button class="room-object clue-object" data-object="clue" style="left:20%;top:69%" aria-label="Approach evidence"><span class="object-marker"><svg class="icon"><use href="#icon-evidence"/></svg></span><span class="object-label">EVIDENCE <small>FIELD INTELLIGENCE</small></span></button>
+       <button class="room-object locker-object" data-object="locker" style="left:13%;top:47%" aria-label="Approach locker"><span class="object-marker"><svg class="icon"><use href="#icon-key"/></svg></span><span class="object-label">LOCKER <small>SUPPLY CACHE</small></span></button>
+       <div id="player" class="player" style="left:49%;top:76%"><span class="player-tag">YOU</span><svg viewBox="0 0 80 115" aria-label="Player character"><use href="#agent-sprite"/></svg></div>
+       <button id="interact-prompt" class="interact-prompt" hidden><kbd>E</kbd> INTERACT</button>
+      </div>
+      <div class="room-bottom"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> MOVE <span class="separator">|</span> <kbd>E</kbd> INTERACT</span><span>CLICK AN OBJECT TO APPROACH</span></div>
+     </div>
+     <aside class="zone-map panel" aria-label="Zone map"><div class="map-heading"><svg class="icon"><use href="#icon-map"/></svg><span>NETWORK MAP</span><span class="muted">6 ZONES</span></div><div class="zone-list">
+      <button class="zone-node active" data-zone="A"><span class="zone-letter">A</span><span class="zone-copy"><strong>Phishing Detective</strong><small>ZONE A</small></span><span class="zone-state">AVAILABLE</span></button>
+      <button class="zone-node locked" data-zone="B"><span class="zone-letter">B</span><span class="zone-copy"><strong>Password Fortress</strong><small>ZONE B</small></span><span class="zone-state">🔒 LOCKED</span></button>
+      <button class="zone-node locked" data-zone="C"><span class="zone-letter">C</span><span class="zone-copy"><strong>Malware Hunter</strong><small>ZONE C</small></span><span class="zone-state">🔒 LOCKED</span></button>
+      <button class="zone-node locked" data-zone="D"><span class="zone-letter">D</span><span class="zone-copy"><strong>Network Defender</strong><small>ZONE D</small></span><span class="zone-state">🔒 LOCKED</span></button>
+      <button class="zone-node locked" data-zone="E"><span class="zone-letter">E</span><span class="zone-copy"><strong>Social Engineering</strong><small>ZONE E</small></span><span class="zone-state">🔒 LOCKED</span></button>
+      <button class="zone-node locked" data-zone="F"><span class="zone-letter">F</span><span class="zone-copy"><strong>Final Hacker Showdown</strong><small>ZONE F</small></span><span class="zone-state">🔒 LOCKED</span></button>
+     </div><div class="map-footer"><span class="status-dot danger-dot"></span> ZERO IS WATCHING.</div></aside>
+    </div>
+   </section>
+   <section id="challenge-screen" class="challenge-screen" aria-label="Active cybersecurity challenge" hidden><div id="challenge-content"></div></section>
+  </div>
+  <div class="game-bottom">
+   <section class="inventory-panel panel"><p class="eyebrow">INVENTORY</p><div id="inventory-items"><span class="muted">No items collected</span></div></section>
+   <section class="airi-panel panel" aria-label="AIRI dialogue"><div class="airi-avatar"><svg viewBox="0 0 220 250" aria-hidden="true"><use href="#airi-portrait"/></svg></div><div class="airi-copy"><p class="eyebrow">AIRI <span id="airi-status">AI SECURITY MENTOR</span><span class="status-dot"></span></p><p id="airi-message" aria-live="polite">I've detected several suspicious emails. Let's investigate them before ZERO gains access.</p></div></section>
+   <section class="toolkit-panel panel"><p class="eyebrow">CYBER TOOLKIT</p><div class="toolkit-buttons"><button data-action="scan"><svg class="icon"><use href="#icon-scan"/></svg><span>SCAN</span></button><button data-action="inspect"><svg class="icon"><use href="#icon-search"/></svg><span>INSPECT</span></button><button data-action="hint"><svg class="icon"><use href="#icon-hint"/></svg><span>HINT</span></button><button data-action="evidence"><svg class="icon"><use href="#icon-evidence"/></svg><span>EVIDENCE</span></button><button data-action="notes"><svg class="icon"><use href="#icon-notes"/></svg><span>NOTES</span></button></div></section>
+  </div>
+  <div class="touch-controls" aria-label="Touch movement controls"><button data-move="left" aria-label="Move left">←</button><div><button data-move="up" aria-label="Move up">↑</button><button data-move="down" aria-label="Move down">↓</button></div><button data-move="right" aria-label="Move right">→</button><button data-action="interact" class="touch-interact">INTERACT</button></div>
+ </section>
+</main>
+
+<dialog id="main-modal" class="modal-panel" aria-labelledby="modal-heading"><button id="modal-close" class="modal-close icon-button" aria-label="Close dialog"><svg class="icon"><use href="#icon-close"/></svg></button><div id="modal-content" class="modal-content"></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<aside id="hacker-notice" class="hacker-notice" role="status" hidden><div class="eyebrow danger">⚠ SYSTEM INTRUSION DETECTED</div><strong>ZERO<span> // UNKNOWN ORIGIN</span></strong><p>“You think a few passwords can stop me?”</p><div class="hacker-signal"></div></aside>
+<noscript><div style="position:fixed;inset:0;background:#071121;color:white;padding:10%;font:20px sans-serif">JavaScript is required to play. Enable JavaScript, then reopen index.html. No internet connection is needed.</div></noscript>
+</body>
+</html>
